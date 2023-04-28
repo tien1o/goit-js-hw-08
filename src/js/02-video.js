@@ -10,7 +10,6 @@ player.on(
   'timeupdate',
   throttle(function (data) {
     localStorage.setItem(storageKey, data.seconds);
-    saveCurrentTime(data.seconds);
   }, 1000)
 );
  
