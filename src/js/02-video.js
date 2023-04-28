@@ -8,6 +8,14 @@ const storageKey = 'videoplayer-current-time';
  
 const savedTime = localStorage.getItem(storageKey);
 
+player.on(
+  'timeupdate',
+  throttle(function (data) {
+    localStorage.getItem(storageKey, data.seconds);
+  }, 1000)
+);
+
+
 if (savedTime) {
   player.setCurrentTime(savedTime).catch(error => console.log(error));
 }
@@ -16,9 +24,3 @@ const saveCurrentTime = function (seconds) {
   localStorage.setItem(storageKey, seconds);
 };
 
-player.on(
-  'timeupdate',
-  throttle(function (data) {
-    saveCurrentTime(data.seconds);
-  }, 1000)
-);
