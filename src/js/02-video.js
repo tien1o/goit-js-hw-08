@@ -18,7 +18,3 @@ player.on(
 if (savedTime) {
   player.setCurrentTime(savedTime).catch(error => console.log(error));
 }
-
-const saveCurrentTime = function (seconds) {
-  localStorage.setItem(storageKey, seconds);
-};
